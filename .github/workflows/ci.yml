@@ -44,10 +44,9 @@ jobs:
             **/*.gradle.kts
             gradle/wrapper/gradle-wrapper.properties
       - name: Install Android SDK components
-        run: |
-          set +o pipefail
-          yes | sdkmanager --licenses > /dev/null
-          set -o pipefail
-          sdkmanager "platforms;android-36" "build-tools;36.0.0"
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+          log-accepted-android-sdk-licenses: false
       - name: Build and lint
         run: ./gradlew --no-daemon --no-watch-fs -Dorg.gradle.native=false assembleDebug lintDebug
