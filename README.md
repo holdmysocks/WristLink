@@ -35,6 +35,8 @@ Google Play sign-in is not required to install the APK. An existing standalone w
 
 Download the tested APK from [GitHub Releases](https://github.com/holdmysocks/WristLink/releases/latest), or build from source below. Release APKs are debug-signed personal-baseline builds; updates need the same signing identity.
 
+**Brand-new watch asking for an Android phone?** Start with [step 0: standalone onboarding](docs/SETUP.md#0-brand-new-watch-skip-android-phone-onboarding). It explains the Wear-icon tap-and-hold procedure and how to enable ADB afterward. Then complete the separate background-association workaround below.
+
 The tested watch rejects the ordinary app-driven association flow with:
 
 ```text

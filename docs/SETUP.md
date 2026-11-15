@@ -6,6 +6,30 @@ Bluetooth pairing, iPhone notification-sharing authorization, and the watch-side
 
 On the validated Watch8, the normal association approval flow rejects third-party apps. The ADB shell command below bypasses that approval flow for this app and phone. It is not root or a blanket security-policy change. Availability on other firmware is unverified.
 
+## 0. Brand-new watch: skip Android-phone onboarding
+
+**Already at the watch face? Skip this step. Do not reset a working watch to repeat onboarding.**
+
+For a new watch showing the phone-setup screens:
+
+1. Power on and swipe up from the welcome screen.
+2. At the phone-pairing/setup screen, repeatedly tap the **Wear icon near the top** until a prompt asks you to hold the watch icon for more than three seconds.
+3. After the prompt disappears and the icon returns, press and hold that same icon for **more than three seconds**.
+4. Release when **Starting** (or its localized equivalent) appears, then wait for standalone startup to finish.
+
+[Samsung's standalone-setup instructions](https://www.samsung.com/de/support/mobile-devices/galaxy-watch-ohne-smartphone-einrichten/) describe this method for Wear OS Galaxy Watch4 and later. We did not repeat fresh onboarding during WristLink testing. Region/carrier/firmware availability can differ; [Samsung's US guidance](https://www.samsung.com/us/support/answer/ANS10003455/) is more restrictive. If the icon/prompt is absent, compatibility of this bypass with that firmware is unverified.
+
+Standalone startup does **not** complete Google-account/Play Store sign-in or carrier eSIM setup. WristLink is installed with ADB afterward; the Companion Device association bypass in step 4 is a separate operation.
+
+### Prepare the watch for ADB
+
+1. In watch Settings > Connections > Wi-Fi, connect to the computer's reachable Wi-Fi network.
+2. Open Settings > About watch > Software and tap **Software version five times**, or until the developer-mode confirmation appears.
+3. Return to Settings > Developer options. Enable **ADB debugging** and **Wireless debugging**, then approve the debugging-network prompt for your chosen network.
+4. Keep Wireless debugging open and continue below. Its pairing port/code and connection port are separate.
+
+Menu labels can vary by One UI version. See [Samsung's developer connection guide](https://developer.samsung.com/health/sensor/guide/connect-watch.html).
+
 ## 1. Connect ADB
 
 Put the computer and watch on reachable Wi-Fi. Enable Wireless debugging and keep that screen open. If the computer is not paired, use **Pair new device** and its temporary pairing address/code:
