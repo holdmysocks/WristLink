@@ -1,0 +1,58 @@
+# Gradle / Android / standalone test outputs
+.gradle/
+.kotlin/
+**/build/
+test-classes/
+local.properties
+captures/
+.cxx/
+.externalNativeBuild/
+
+# IDE and operating-system files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Signing keys, credentials, and local environment
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+key.properties
+keystore.properties
+signing.properties
+.env
+.env.*
+!.env.example
+
+# Personal release bundles and research/diagnostic material
+/outputs/
+/work/
+/releases/
+/artifacts/
+/docs/private/
+/START-HERE.md
+/ADB-SETUP-AND-BYPASS.md
+/RELEASE-NOTES.md
+/WristLink-test-guide.md
+/WristLink-icon-notes.md
+/release-manifest.json
+/SHA256SUMS.txt
+/*.sha256
+*.apk
+*.aab
+*.apks
+*.zip
+*.log
+*.hprof
+*-diagnostics.txt
+*-dump.txt
+
+# Local scratch files; README/docs/source and Gradle wrapper remain tracked
+*.tmp
+*.bak
+*~
