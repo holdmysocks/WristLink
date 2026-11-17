@@ -144,6 +144,30 @@ Swiping one watch alert also clears its in-app entry. With **Dismiss on iPhone**
 
 Saved dismissal hashes can suppress unchanged old notifications after reconnect. Fresh messages with different content/date remain eligible for alerts. iOS grouping and missing dates limit this matching.
 
+## Messages replies
+
+In iPhone Settings > Bluetooth > the watch's information button, enable **Show Message Notifications**. This is separate from **Share System Notifications**, which authorizes the ANCS alert link. The tested phone initially rejected MAP access until Show Message Notifications was enabled.
+
+Receive a fresh text and tap **Reply** on its native watch notification or in WristLink's notification details. WristLink looks up recent messages and opens a draft when it finds one unique text/time match. Otherwise, choose the sender or enter a phone number. Names come from the phone's MAP data or matching active iPhone notifications, so an unmatched sender may still display a number.
+
+Enter up to 160 characters, tap **Review reply**, check the name/number and exact text, then confirm **Send once**. Replies go to one phone number; group conversations and email-address recipients are not supported. A successful iMessage delivery was confirmed on the tested pairing, but routing depends on the phone. “Reply accepted” reports phone acceptance, not recipient delivery. Check the phone and recipient before retrying an uncertain send; WristLink never retries automatically.
+
+No additional iPhone app or watch test app is needed. MAP runs only for sender lookup and confirmed sending; it does not replace ANCS, poll in the background, or save drafts/contacts/reply history. Photo previews are not included.
+
+If the notification changes or the Bluetooth notification session ends while drafting, start again from a current notification. This prevents submitting a reply against an expired context.
+
+### Remove the optional research probe
+
+If you installed **WristLink MAP Probe** during development, it can now be uninstalled from the watch's Apps settings. The integrated app is **WristLink** (`dev.wristlink`); keep that installed.
+
+Optional ADB equivalent:
+
+```powershell
+adb -s $WatchSerial uninstall dev.wristlink.mapprobe
+```
+
+Removing `dev.wristlink.mapprobe` does not remove WristLink's settings, association, or Bluetooth bond. Do not uninstall `dev.wristlink`, clear its data, or remove its association for this cleanup.
+
 ## Recovery
 
 1. For ADB failures, verify the current IP/subnet/connection port and `adb devices -l` state.

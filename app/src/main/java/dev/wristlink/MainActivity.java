@@ -92,6 +92,11 @@ public final class MainActivity extends Activity {
         AlertDialog dialog=new AlertDialog.Builder(this).setView(scroller).setNegativeButton("Close",null).create();
         Button dismiss=new Button(this); dismiss.setText("Clear from watch"); dismiss.setAllCaps(false); content.addView(dismiss);
         dismiss.setOnClickListener(v -> { probe.dismiss(uid,session); dialog.dismiss(); });
+        if (ReplyActivity.supports(entry.app)) {
+            Button reply=new Button(this); reply.setText("Reply"); reply.setAllCaps(false);
+            LinearLayout.LayoutParams layout=new LinearLayout.LayoutParams(-1,dp(48)); layout.topMargin=dp(8); reply.setLayoutParams(layout); content.addView(reply);
+            reply.setOnClickListener(v -> { startActivity(ReplyActivity.intent(this,uid,session)); dialog.dismiss(); });
+        }
         String[] labels={entry.positive,entry.negative}; boolean[] flags={entry.hasPositive,entry.hasNegative};
         for (int i=0;i<2;i++) {
             if (!flags[i] || labels[i].isBlank()) continue;
@@ -522,6 +527,10 @@ public final class MainActivity extends Activity {
                 .setDeleteIntent(deleted)
                 .setVisibility(Notification.VISIBILITY_PRIVATE);
             builder.addAction(new Notification.Action.Builder(null,"Open & actions",open).build());
+            if (ReplyActivity.supports(e.app)) {
+                PendingIntent reply=PendingIntent.getActivity(context,0,ReplyActivity.intent(context,uid,notificationSession),PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+                builder.addAction(new Notification.Action.Builder(null,"Reply",reply).build());
+            }
             notifications.notify("ancs",(int)uid,builder.build());
             note(refreshOnly ? "App label refreshed silently." : "Notification posted; silent=" + e.silent);
         }

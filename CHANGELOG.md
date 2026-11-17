@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.8.0 — 2026-11-16
+
+- Add Reply to native Messages notifications and their in-app details, using Bluetooth MAP through the existing iPhone pairing.
+- Automatically open a draft for one uniquely matching message based on text, time, and valid sender identity. Ambiguous or unsupported entries retain a manual sender picker.
+- Show names from MAP or matching active iPhone notifications alongside the phone number. Keep name associations in memory only and clear the displayed name if the number is edited.
+- Require review of one phone number and up to 160 characters, followed by Send once. No automatic retries, polling, saved drafts, or reply history.
+- Validate the notification session, original content, and bonded/associated iPhone again before submission. Report phone acceptance separately from confirmed delivery.
+- Handle explicit UTC/offset timestamps and keep group detection conservative. Group conversations and email-address recipients remain unsupported.
+- Add protocol tests for reply encoding, packet fragmentation, lost responses, automatic matching, duplicate texts, conflicting names, timestamp formats, and Unicode.
+- User-confirmed integrated replies, automatic sender selection, and names on the tested Watch8/iPhone setup. A separate probe confirmed iMessage delivery. Photos returned no image data in two MAP tests and are not included.
+- Retain the existing ANCS background link, reconnect behavior, dismissal settings, icon, and ADB association workaround.
+
 ## 0.5-link-recovery — 2026-11-15 baseline
 
 - Replace stale disconnected GATT clients when an incoming iPhone BLE connection becomes available.
