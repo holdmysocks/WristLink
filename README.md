@@ -32,6 +32,10 @@ ANCS does not provide a reliable reply address. Matching therefore uses exact me
 
 “Reply accepted” means the iPhone accepted the request, not that delivery was confirmed. If the outcome is unknown, check the phone and recipient before starting another reply. Nothing is sent unless you confirm **Send once**; closing or losing the connection after submission does not undo an already accepted message. No drafts or reply history are saved, and the MAP connection runs only while you request a sender list or confirm a send.
 
+## Native phone calls
+
+On the tested Galaxy Watch8 and iPhone pairing, Samsung Phone can answer calls over Bluetooth Hands-Free. Keep Samsung Phone enabled. If the watch disappears from the iPhone's call audio choices, use the [native calling guide](docs/CALLING.md) to check the dialer and reconnect Hands-Free. Automatic reconnection after a Bluetooth restart failed on the tested firmware, even with the saved calling preference.
+
 ## Requirements
 
 - A Wear OS watch running Android API 36 or later; current hardware validation is limited to Watch8.
@@ -111,7 +115,7 @@ Dismissals store SHA-256 keys and timestamps, not message text. Records are capp
 - Persistent dismissal matching needs unchanged app/title/text/date attributes. Missing dates are session-only; changed content may be treated as new.
 - Phone actions depend on what iOS offers for that notification. A successful request write does not prove completion. Short typed replies are available for Messages through MAP; other apps retain iOS-provided actions only.
 - Native watch Clear all follows the saved Dismiss on iPhone preference; WristLink cannot reliably intercept it to ask a question first.
-- Health integration, Play Store sign-in, full Samsung phone pairing, and call-audio implementation are outside scope. Native Bluetooth calling happened to work on the tested pairing and is not provided by WristLink.
+- Health integration, Play Store sign-in, full Samsung phone pairing, and call-audio implementation are outside scope. Samsung Phone and Bluetooth Hands-Free handle [native calling](docs/CALLING.md) separately.
 - Association behavior on other firmware, force-stop, revoked permissions, and lost bonds need separate validation.
 
 ## Project layout

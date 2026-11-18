@@ -144,6 +144,10 @@ Swiping one watch alert also clears its in-app entry. With **Dismiss on iPhone**
 
 Saved dismissal hashes can suppress unchanged old notifications after reconnect. Fresh messages with different content/date remain eligible for alerts. iOS grouping and missing dates limit this matching.
 
+## Native phone calls
+
+Keep Samsung Phone enabled if you want to answer calls on the watch. See the [native calling guide](CALLING.md) for restoring the dialer and reconnecting Bluetooth Hands-Free if the watch is missing from the iPhone's call audio choices.
+
 ## Messages replies
 
 In iPhone Settings > Bluetooth > the watch's information button, enable **Show Message Notifications**. This is separate from **Share System Notifications**, which authorizes the ANCS alert link. The tested phone initially rejected MAP access until Show Message Notifications was enabled.
